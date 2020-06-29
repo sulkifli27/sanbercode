@@ -1,0 +1,16 @@
+1. create database myshoop;
+2. create table users (id integer primary key auto_increment, name varchar(255), email varchar(255), password varchar(255))engine=innodb;
+   create table categories (id integer primary key auto_increment, name varchar(255))engine=innodb;
+   create table items (id integer primary key auto_increment , name varchar(255), description varchar(255), price integer, stock integer, category_id integer, foreign key (category_id) references categories (id) on update cascade on delete cascade)engine=innodb;
+
+3. insert into users (name, email, password) values ('jhon doe','jhon@doe.com','john123'),('jane doe','jane@doe.com','jenita123');
+   insert into categories (name) values ('gadget'),('cloth'),('men'),('women'),('branded');
+   insert into items (name,description, price, stock,category_id) values ('sumsang b50','hape keren dari merek sumsang','4000000','100','1'),('uniklooh','baju keren dari brand ternama','500000','50','2'),('IMHO Watch','jam tangan anak yang jujur banget','2000000','10','1');
+
+4. a. select name, email from users;
+   b. -  select * from items where price > 1000000;
+      -  select * from items where name like 'uniklo%';
+   c.  select items.name , items.description, items.price, items.stock, categories.id as kategori_id, categories.name as kategori from items join categories on (items.category_id = categories.id);
+
+5. update items set  price = 2500000 where id = 1;
+   
